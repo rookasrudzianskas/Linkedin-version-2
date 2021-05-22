@@ -3,6 +3,18 @@ import "./styles/Sidebar.css";
 import {Avatar} from "@material-ui/core";
 
 const Sidebar = () => {
+
+
+    const recentItem = (topic) => (
+        // this returns an item
+        <div className="sidebar__recentItem">
+            {/* span is going to be the hash and the p something, what is passed*/}
+            <span className="sidebar__hash">#</span>
+            <p>{topic}</p>
+        </div>
+    );
+
+
     return (
         <div className="sidebar">
             <div className="sidebar__top">
@@ -26,7 +38,13 @@ const Sidebar = () => {
             </div>
 
             <div className="sidebar__bottom">
-                <p>Recent</p>
+                <p className="sidebar__pTag">Recent</p>
+                {/* this fires up the recentItem function, which returns the hash and the keyword*/}
+                {recentItem('reactjs')}
+                {recentItem('programming')}
+                {recentItem('softwareengeneering')}
+                {recentItem('design')}
+                {recentItem('development')}
             </div>
         </div>
     );

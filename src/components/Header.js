@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <div className="header">
             <div className="header__left">
-                <img src="https://www.amocrm.com/static/images/pages/integrations/logo/linkedin.png" alt=""/>
+                <img src="https://ricardoreadingmouse.com.au/wp-content/uploads/2018/04/linkedin-logo-copy.png" alt=""/>
 
                 <div className="header__search">
                     <SearchIcon />
