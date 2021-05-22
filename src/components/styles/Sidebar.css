@@ -31,3 +31,48 @@
     border-top-left-radius: 10px;
     object-fit: cover;
 }
+.sidebar__stat {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar__stat > p {
+    color: gray;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
