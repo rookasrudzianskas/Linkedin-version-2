@@ -2,6 +2,7 @@ import React from 'react';
 import "./styles/Feed.css";
 import CreateIcon from '@material-ui/icons/Create';
 import InputOption from "./InputOption";
+import ImageIcon from '@material-ui/icons/Image';
 
 const Feed = () => {
     return (
@@ -16,7 +17,7 @@ const Feed = () => {
                 </div>
 
                 <div className="feed__inputOptions">
-                    <InputOption />
+                    <InputOption Icon={ImageIcon} color="#79B5F9" title="Photo" />
                 </div>
             </div>
         </div>
