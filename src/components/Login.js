@@ -35,7 +35,7 @@ const Login = () => {
     };
 
     const login = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         auth.signInWithEmailAndPassword(email, password).then(userAuth => {
             dispatch(login({
                 email: userAuth.user.email,
