@@ -1,8 +1,9 @@
 import React from 'react';
+import "./styles/Widgets.css";
 
 const Widgets = () => {
     return (
-        <div>
+        <div className="widgets">
 
         </div>
     );
