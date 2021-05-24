@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./styles/Feed.css";
 import CreateIcon from '@material-ui/icons/Create';
 import ImageIcon from '@material-ui/icons/Image';
@@ -7,17 +7,44 @@ import NoteIcon from '@material-ui/icons/Note';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import InputOption from "./InputOption";
 import Post from "./Post";
+import db from "../firebase";
+import firebase from "firebase";
+
 
 const Feed = () => {
 
     const [posts, setPosts] = useState([]);
+    const [input, setInput] = useState("");
+
+    // console.log(posts);
+    useEffect(() => {
+        // will run once, then component loads
+        db.collection("posts").orderBy("timestamp", 'desc').onSnapshot(snapshot => {
+            // we get real time listener
+            setPosts(snapshot.docs?.map(doc => (
+                // for every post in posts, we return
+                {
+                    id: doc.id,
+                    data: doc.data(),
+                }
+            )))
+        })
+    }, []);
 
     const sendPost = (e) => {
         e.preventDefault();
 
+        // adds the post
+        db.collection("posts").add({
+            name: "Rokas Rudzianskas",
+            description: "this is a test",
+            message: input,
+            photoUrl: '',
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
 
-
-    }
+        setInput("")
+    };
 
     return (
         <div className="feed">
@@ -25,8 +52,8 @@ const Feed = () => {
                 <div className="feed__input">
                     <CreateIcon />
                     <form action="">
-                        <input type="text"/>
-                        <button value={posts} onChange={event => setPosts(event.target.value)} type="submit" onClick={sendPost}>Send</button>
+                        <input value={input} onChange={event => setInput(event.target.value)} type="text"/>
+                        <button type="submit" onClick={sendPost}>Send</button>
                     </form>
                 </div>
 
@@ -39,10 +66,9 @@ const Feed = () => {
             </div>
 
         {/*    Posts    */}
-            {posts.map((post) => (
-                <Post />
+            {posts.map(({id, data: {name, description, message, photoUrl}}) => (
+                <Post key={id} name={name} description={description} message={message} photoUrl={photoUrl} />
             ))}
-            <Post name="Rokas Rudzianskas" description="This is a test post" message="Wow this really works"/>
 
 
         </div>
