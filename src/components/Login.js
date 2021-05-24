@@ -6,7 +6,7 @@ const Login = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [photo, setPhoto] = useState('')
+    const [profilePic, setProfilePic] = useState('')
 
     const register = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
 
             <form action="">
                 <input value={name} onChange={event => setName(event.target.value)} type="text" placeholder="Full name (required if registering)"/>
-                <input value={photo} onChange={event => setPhoto(event.target.value)} type="text" placeholder="Profile picture URL (optional)"/>
+                <input value={profilePic} onChange={event => setProfilePic(event.target.value)} type="text" placeholder="Profile picture URL (optional)"/>
                 <input value={email} onChange={event => setEmail(event.target.value)} type="email" placeholder="Email"/>
                 <input value={password} onChange={event => setPassword(event.target.value)} type="password" placeholder="Password"/>
 
