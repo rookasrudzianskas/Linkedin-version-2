@@ -1,5 +1,5 @@
 import React from 'react';
-import "./styles/HeaderOption.css";
+import "./styles/InputOption.css";
 
 const InputOption = ({title, Icon, color}) => {
     return (
