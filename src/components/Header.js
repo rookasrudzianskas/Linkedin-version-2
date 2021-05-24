@@ -9,8 +9,18 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import HeaderOption from "./HeaderOption";
 import {Avatar} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
+import {logout, selectUser} from "../features/userSlice";
+import {auth} from "../firebase";
 
 const Header = () => {
+
+    const dispatch = useDispatch();
+
+    const logoutOfApp = () => {
+        dispatch(logout());
+        auth.signOut();
+    }
     return (
         <div className="header">
             <div className="header__left">
@@ -28,7 +38,7 @@ const Header = () => {
                 <HeaderOption title="Jobs" Icon={WorkIcon} />
                 <HeaderOption title="Messaging" Icon={ChatBubbleIcon} />
                 <HeaderOption title="Notifications" Icon={NotificationsIcon} />
-                <HeaderOption avatar="https://pbs.twimg.com/profile_images/1350895249678348292/RS1Aa0iK_400x400.jpg" title="me" />
+                <HeaderOption avatar onClick={logoutOfApp} title="me" />
             </div>
         </div>
     );
